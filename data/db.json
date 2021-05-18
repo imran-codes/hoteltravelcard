@@ -1,0 +1,19 @@
+{
+  "hotels": [
+    {
+      "title": "Grand Hyatt Dubai",
+      "region": "Bur Dubai Area, Dubai",
+      "rating": "9.2",
+      "ratingtext": "95",
+      "id": 1,
+      "roomonly": "Room Only",
+      "charges": "Local Charges Payable at Hotel",
+      "totalprice": "£815",
+      "perperson": "£204",
+      "images": {
+        "location": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/0c/80/12/grand-hyatt-dubai.jpg?w=900&h=-1&s=1",
+        "stars": "https://phasetwolearning.files.wordpress.com/2014/06/5-star-rating.jpg"
+      }
+    }
+  ]
+}
