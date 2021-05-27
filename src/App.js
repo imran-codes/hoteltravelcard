@@ -1,11 +1,18 @@
 import Hotelcard from './Hotelcard';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
 
     return (
-        <div className="App" >
-            <Hotelcard />
-        </div>
+        <Router>
+            <div className="App" >
+                <Switch>
+                    <Route path="/">
+                        <Hotelcard />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
     );
 }
 

@@ -5,6 +5,7 @@
       "region": "Bur Dubai Area, Dubai",
       "rating": "9.2",
       "ratingtext": "95",
+      "country": "Dubai",
       "id": 1,
       "roomonly": "Room Only",
       "charges": "Local Charges Payable at Hotel",
@@ -12,6 +13,22 @@
       "perperson": "£204",
       "images": {
         "location": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/0c/80/12/grand-hyatt-dubai.jpg?w=900&h=-1&s=1",
+        "stars": "https://phasetwolearning.files.wordpress.com/2014/06/5-star-rating.jpg"
+      }
+    },
+    {
+      "title": "Hilton Rome Airport",
+      "region": "Fiumicino, 00054, Italy",
+      "rating": "7.6",
+      "ratingtext": "975",
+      "country": "Italy",
+      "id": 2,
+      "roomonly": "Room Only",
+      "charges": "Free Parking for all guests",
+      "totalprice": "£917",
+      "perperson": "£255",
+      "images": {
+        "location": "https://thumbnails.expedia.com/2UOB_ehemHE6BXfYR36uCN0UAHQ=/400x142/smart/filters:quality(60)/exp.cdn-hotels.com/hotels/1000000/570000/564200/564180/b9448a2f_y.jpg",
         "stars": "https://phasetwolearning.files.wordpress.com/2014/06/5-star-rating.jpg"
       }
     }

@@ -1,47 +1,18 @@
-import React, { useState, useEffect } from 'react';
 import HotelList from './Hotelcardlist';
+import useFetch from './useFetch';
 
 
 const Hotelcard = () => {
-  const [hotels, setHotels] = useState(null)
-  const [isPending, setIsPending] = useState(true);
-  const [error, setError] = useState(null);
+  // destructuring using object instead of array because we can grab individuals without order
+  const { data: hotels, isPending, error, handleLink } = useFetch("http://localhost:8000/hotels");
 
-  //return new filtered array based on current hotels array
-  const handleLink = () => {
-    alert("gone to view more page");
-  }
-
-  // run code on every render
-  useEffect(() => {
-    // setTimeout to show loading message for a second - This is to simulate if we was fetching data from an external api
-    setTimeout(() => {
-      fetch("http://localhost:8000/hotels")
-        .then(res => {
-          if (!res.ok) { // if response is not okay, throw new error
-            throw Error('could not get the data. Please try again later');
-          }
-          return res.json()
-        })
-        .then((data) => {
-          setIsPending(false);
-          setHotels(data);
-          setError(null);
-        })
-        .catch(err => {
-          // Catches network error automatically
-          setIsPending(false);
-          setError(err.message);
-        })
-    }, 1000);
-    //run once when dependency below is changed
-  }, [])
-
+  // return conditional rendering using logical && - if left hand side is true then output right ie once state (hotels) has a value - cycle through and render to the dom
   return (
     <div className="card">
       { error && <div>{error}</div>}
       { isPending && <div className="loading"></div>}
       { hotels && <HotelList hotels={hotels} title="All Hotels" handleLink={handleLink} />}
+      { hotels && <HotelList hotels={hotels.filter((hotel) => hotel.country === "Italy")} title="Italian Hotels" handleLink={handleLink} />}
     </div>);
 }
 

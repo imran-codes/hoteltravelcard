@@ -3,13 +3,18 @@ import percentage from "./percentage.svg"
 import reaction from "./smiley.svg"
 
 
-//pass functions as props
+//pass functions as props - use hotels data from parent component aka hotelcard - use the fetch data  
+//props are from hotelcard - then can use in this list component 
 const HotelList = ({ hotels, title, handleLink }) => {
 
+
+  //the below is a reusable component across many pages by just dropping it in as done on hotelcard.js
   return (
     <div className="hotel-list">
       <h2 style={{ paddingLeft: "20px" }}> {title} </h2>
+
       {hotels.map(hotel => (
+        // key attribute for each item in db - normally the id - cycle through using map for each hotel
         <div className="hotel-preview" key={hotel.id}>
           <img style={{ width: "100%" }} src={hotel.images.location} alt="Hotelimg" />
           <h2>{hotel.title}</h2>
