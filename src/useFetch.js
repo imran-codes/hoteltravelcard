@@ -7,16 +7,18 @@ const useFetch = (url) => {
   const [error, setError] = useState(null);
 
   // define inside this component so can interact with data directly and then pass function through as a prop in the return
-  const handleLink = () => {
-    alert("gone to view more page");
-  }
+  // const handleLink = () => {
+  //   alert("gone to view more page");
+  // }
+
 
   // runs a function on every render - anytime the data changes
   useEffect(() => {
+    const abortCont = new AbortController();
     // setTimeout to show loading message for a second - This is to simulate if we was fetching data from an external api
     setTimeout(() => {
       //get endpoint
-      fetch(url)
+      fetch(url, { signal: abortCont.signal })
         .then(res => {
           //console.log(res)
           if (!res.ok) { // if response is not okay, throw new error
@@ -32,17 +34,24 @@ const useFetch = (url) => {
           setError(null);
         })
         .catch(err => {
-          // Catches network error automatically
-          setIsPending(false);
-          setError(err.message);
+          if (err.name === "AbortError") {
+            console.log("fetch aborted");
+          } else {
+            // Catches network error automatically
+            setIsPending(false);
+            setError(err.message);
+          }
         })
     }, 1000);
+    //stop the fetch in the background as we dont want to update the state - ABORT CONTROLLER
+    return () => abortCont.abort();
+
     //whenever url changes run function // array added to stop re renders continuously
     // if empty when its first render only 
   }, [url])
 
 
-  return { data, isPending, error, handleLink };
+  return { data, isPending, error };
 }
 
 export default useFetch;
